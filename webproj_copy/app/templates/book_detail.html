@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>Book Details: {{ title }}</h1>
+
+        <p><strong>Title:</strong> {{ title }}</p>
+        <p><strong>Published Date:</strong> {{ date }}</p>
+        <p><strong>Authors:</strong> 
+            {% for author in authors %}
+                {{ author.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p><strong>Publisher:</strong> {{ publisher }}</p>
+
+        <a href="{% url 'books' %}">Back to the book list</a>
+
+        <footer>
+            <p>&copy; {{ year }}</p>
+        </footer>
+    </body>
+{% endblock %}

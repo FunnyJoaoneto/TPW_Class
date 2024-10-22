@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{%  if error %}
+    <p stlye="...">ERROR: Insert a query term.</p>
+{% endif %}
+
+<form action="." method="post">
+    {%  csrf_token %}
+    <input type="text" name="query">
+    <input type="submit" value="Search">
+</form>
+
+{% endblock %}

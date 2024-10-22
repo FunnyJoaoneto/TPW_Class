@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <p>Search by <strong>{{ query }}</strong></p>
+    {%  if boks %}
+    <p>Found {{ boks|length }}</p>
+    <ul>
+        {% for bok in boks %}
+            <li> {{ bok.title }}</li>
+            <ul>
+                <li>{{ bok.publisher }}</li>
+                <li>{{ bok.date }}</li>
+                <ul>
+                    {% for aut in bok.authors.all %}
+                        <li>{{ aut }}</li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Not found any result.</p>
+    {% endif %}
+    
+{% endblock %}
